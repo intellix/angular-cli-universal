@@ -1,21 +1,12 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ApolloModule } from 'apollo-angular';
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GraphqlModule } from './graphql/graphql.module';
 import { RedditModule } from './reddit/reddit.module';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { HomeComponent } from './home/home.component';
-
-export function provideClient(): ApolloClient {
-  return new ApolloClient({
-    networkInterface: createNetworkInterface({
-      uri: 'https://www.graphqlhub.com/graphql'
-    }),
-  });
-}
 
 @NgModule({
   declarations: [
@@ -25,8 +16,8 @@ export function provideClient(): ApolloClient {
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     BrowserTransferStateModule,
+    GraphqlModule,
     AppRoutingModule,
-    ApolloModule.forRoot(provideClient),
     RedditModule,
     PokemonModule,
   ],
