@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ApolloModule } from 'apollo-angular';
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
@@ -24,6 +24,7 @@ export function provideClient(): ApolloClient {
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
+    BrowserTransferStateModule,
     AppRoutingModule,
     ApolloModule.forRoot(provideClient),
     RedditModule,

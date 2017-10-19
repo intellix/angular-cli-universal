@@ -1,10 +1,12 @@
 <p *ngIf="loading">Loading...</p>
 
-<div class="listing" *ngFor="let listing of listings">
-  <h3>{{ listing.title }}</h3>
-  <ul>
-    <li *ngFor="let comment of listing.comments">
-      <div>{{ comment.body }} - <b>{{ comment.author.username }}</b></div>
-    </li>
-  </ul>
-</div>
+<ng-container *ngIf="!loading">
+  <div class="listing" *ngFor="let listing of listings">
+    <h3>{{ listing.title }}</h3>
+    <ul>
+      <li *ngFor="let comment of listing.comments">
+        <div>{{ comment.body }} - <b>{{ comment.author.username }}</b></div>
+      </li>
+    </ul>
+  </div>
+</ng-container>
