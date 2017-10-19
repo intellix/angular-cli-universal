@@ -6,6 +6,7 @@ import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RedditModule } from './reddit/reddit.module';
+import { PokemonModule } from './pokemon/pokemon.module';
 import { HomeComponent } from './home/home.component';
 
 export function provideClient(): ApolloClient {
@@ -26,6 +27,7 @@ export function provideClient(): ApolloClient {
     AppRoutingModule,
     ApolloModule.forRoot(provideClient),
     RedditModule,
+    PokemonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

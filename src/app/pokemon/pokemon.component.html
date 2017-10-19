@@ -1,0 +1,12 @@
+<ng-container *ngIf="pokemon">
+  <h3>{{ pokemon.name | titlecase }}</h3>
+  <p>
+    <b>Base XP:</b> {{ pokemon.base_experience }}
+  </p>
+  <p>
+    <b>Weight:</b> {{ pokemon.weight }}
+  </p>
+  <p>
+    <b>Height:</b> {{ pokemon.height }}
+  </p>
+</ng-container>
