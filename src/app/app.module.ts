@@ -1,5 +1,6 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,7 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
-    BrowserTransferStateModule,
+    TransferHttpCacheModule,
     GraphqlModule,
     AppRoutingModule,
     RedditModule,
