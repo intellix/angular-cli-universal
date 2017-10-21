@@ -17,8 +17,8 @@ const uri = 'https://www.graphqlhub.com/graphql';
 export class GraphqlModule {
   constructor(private apollo: Apollo, private http: HttpClient) {
     this.apollo.create({
-      link: new HttpLinkHandler(http, { uri }),
-      cache: new InMemoryCache,
+      link: new HttpLinkHandler(http, { uri, method: 'GET' }),
+      cache: new InMemoryCache(),
     });
   }
 }

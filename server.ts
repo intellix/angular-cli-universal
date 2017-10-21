@@ -44,8 +44,25 @@ app.set('views', join(DIST_FOLDER, 'browser'));
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
+
 // All regular routes use the Universal engine
-app.get('*', (req, res) => res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req }));
+const cache = {};
+app.get('*', (req, res) => {
+  const url = req.url;
+  const now = new Date();
+
+  if (cache[url] && now < cache[url].expiry) {
+    return res.send(cache[url].html);
+  }
+
+  res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req }, (err, html) => {
+    const expiry = new Date();
+    expiry.setDate(expiry.getDate() + 30);
+
+    cache[url] = { expiry, html };
+    res.send(html);
+  });
+});
 
 // Start up the Node server
 app.listen(PORT, () => console.log(`Node server listening on http://localhost:${PORT}`));
